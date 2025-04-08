@@ -19,8 +19,6 @@ namespace Trivia_Pro
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cmbCategoria.Items.AddRange(new string[] { "Ciencia", "Historia", "Cultura General" });
-            cmbNivel.Items.AddRange(new string[] { "Fácil", "Medio", "Difícil" });
             btnResponder.Enabled = false;
         }
 
