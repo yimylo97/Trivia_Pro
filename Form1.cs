@@ -29,7 +29,7 @@ namespace Trivia_Pro
         private int puntaje = 0;
         private int tiempoRestante = 0;
         private int preguntasRespondidas = 0;
-        private const int maxPreguntas = 3;
+        private const int maxPreguntas = 10;
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             if (cmbCategoria.SelectedItem == null || cmbNivel.SelectedItem == null)
@@ -155,13 +155,16 @@ namespace Trivia_Pro
         {
             if (correcta)
             {
-                puntaje += preguntaActual.ObtenerPuntaje();
+                PuntajeManager.SumarPuntaje(preguntaActual.ObtenerPuntaje());
             }
             else
             {
-                puntaje = Math.Max(0, puntaje - 2);
+                PuntajeManager.SumarPuntaje(-2);
+                if (PuntajeManager.PuntajeTotal < 0)
+                    PuntajeManager.ReiniciarPuntaje();
             }
-            lblPuntaje.Text = $"Puntaje: {puntaje}";
+
+            lblPuntaje.Text = $"Puntaje: {PuntajeManager.PuntajeTotal}";
         }
 
         private void btnReiniciar_Click(object sender, EventArgs e)
@@ -201,8 +204,8 @@ namespace Trivia_Pro
         private void MostrarResumenFinal()
         {
             lstHistorial.Items.Clear(); 
-            lstHistorial.Items.Add("🎉 Fin del juego 🎉");
-            lstHistorial.Items.Add($"Preguntas respondidas: {cantidadPreguntasRespondidas}");
+            lstHistorial.Items.Add("Fin del juego");
+            lstHistorial.Items.Add($"Preguntas respondidas: {preguntasRespondidas}");
             lstHistorial.Items.Add($"Puntaje final: {PuntajeManager.PuntajeTotal}");
 
             string comentario;

@@ -16,9 +16,9 @@ namespace Trivia_Pro
         public abstract int ObtenerPuntaje();
         public abstract int ObtenerTiempoLimite();
 
-        public bool EvaluarRespuesta(string respuesta)
+        public virtual bool EvaluarRespuesta(string respuesta)
         {
-            return respuesta == RespuestaCorrecta;
+            return respuesta.Trim().Equals(RespuestaCorrecta.Trim(), StringComparison.OrdinalIgnoreCase);
         }
     }
 }
