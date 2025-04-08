@@ -141,6 +141,30 @@ namespace Trivia_Pro
             lblPuntaje.Text = $"Puntaje: {puntaje}";
         }
 
+        private void btnReiniciar_Click(object sender, EventArgs e)
+        {
+            timerPregunta.Stop();
 
+            PreguntaFactory.ReiniciarPreguntas();
+
+            lblPregunta.Text = "Selecciona una categoría y nivel para comenzar";
+            rbOpcion1.Text = "";
+            rbOpcion2.Text = "";
+            rbOpcion3.Text = "";
+            rbOpcion4.Text = "";
+            
+            rbOpcion1.Checked = false;
+            rbOpcion2.Checked = false;
+            rbOpcion3.Checked = false;
+            rbOpcion4.Checked = false;
+
+            lblPuntaje.Text = "Puntaje: 0";
+            lblTiempo.Text = "Tiempo: 0 segundos";
+            progressTiempo.Value = 0;
+
+            puntaje = 0;
+            preguntasRespondidas = 0;
+            btnResponder.Enabled = false;
+        }
     }
 }

@@ -177,8 +177,9 @@
             this.btnReiniciar.Name = "btnReiniciar";
             this.btnReiniciar.Size = new System.Drawing.Size(75, 23);
             this.btnReiniciar.TabIndex = 13;
-            this.btnReiniciar.Text = "button3";
+            this.btnReiniciar.Text = "Reiniciar";
             this.btnReiniciar.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
             // 
             // lstHistorial
             // 
