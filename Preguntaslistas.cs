@@ -10,13 +10,17 @@ namespace Trivia_Pro
     {
         public override int ObtenerPuntaje()
         {
-            return Nivel switch
+            switch (Nivel)
             {
-                "Fácil" => 10,
-                "Medio" => 20,
-                "Difícil" => 30,
-                _ => 0
-            };
+                case "Fácil":
+                    return 10;
+                case "Medio":
+                    return 20;
+                case "Difícil":
+                    return 30;
+                default:
+                    return 0;
+            }
         }
 
         public override int ObtenerTiempoLimite()
