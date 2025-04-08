@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.cmbNivel = new System.Windows.Forms.ComboBox();
             this.lblPregunta = new System.Windows.Forms.Label();
@@ -38,11 +39,12 @@
             this.rbOpcion2 = new System.Windows.Forms.RadioButton();
             this.rbOpcion3 = new System.Windows.Forms.RadioButton();
             this.rbOpcion4 = new System.Windows.Forms.RadioButton();
-            this.pbTiempo = new System.Windows.Forms.ProgressBar();
             this.btnIniciar = new System.Windows.Forms.Button();
             this.btnResponder = new System.Windows.Forms.Button();
             this.btnReiniciar = new System.Windows.Forms.Button();
             this.lstHistorial = new System.Windows.Forms.ListBox();
+            this.progressTiempo = new System.Windows.Forms.ProgressBar();
+            this.timerPregunta = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // cmbCategoria
@@ -74,27 +76,27 @@
             this.lblPregunta.AutoSize = true;
             this.lblPregunta.Location = new System.Drawing.Point(338, 115);
             this.lblPregunta.Name = "lblPregunta";
-            this.lblPregunta.Size = new System.Drawing.Size(44, 16);
+            this.lblPregunta.Size = new System.Drawing.Size(136, 20);
             this.lblPregunta.TabIndex = 2;
-            this.lblPregunta.Text = "label1";
+            this.lblPregunta.Text = "Mostrar Pregunta";
             // 
             // lblPuntaje
             // 
             this.lblPuntaje.AutoSize = true;
             this.lblPuntaje.Location = new System.Drawing.Point(338, 142);
             this.lblPuntaje.Name = "lblPuntaje";
-            this.lblPuntaje.Size = new System.Drawing.Size(44, 16);
+            this.lblPuntaje.Size = new System.Drawing.Size(211, 20);
             this.lblPuntaje.TabIndex = 3;
-            this.lblPuntaje.Text = "label2";
+            this.lblPuntaje.Text = "Mostrar puntaje acumulado";
             // 
             // lblTiempo
             // 
             this.lblTiempo.AutoSize = true;
             this.lblTiempo.Location = new System.Drawing.Point(338, 167);
             this.lblTiempo.Name = "lblTiempo";
-            this.lblTiempo.Size = new System.Drawing.Size(44, 16);
+            this.lblTiempo.Size = new System.Drawing.Size(184, 20);
             this.lblTiempo.TabIndex = 4;
-            this.lblTiempo.Text = "label3";
+            this.lblTiempo.Text = "Mostrar tiempo restante\n";
             // 
             // lblPreguntasRestantes
             // 
@@ -110,10 +112,10 @@
             this.rbOpcion1.AutoSize = true;
             this.rbOpcion1.Location = new System.Drawing.Point(341, 14);
             this.rbOpcion1.Name = "rbOpcion1";
-            this.rbOpcion1.Size = new System.Drawing.Size(103, 20);
+            this.rbOpcion1.Size = new System.Drawing.Size(81, 20);
             this.rbOpcion1.TabIndex = 6;
             this.rbOpcion1.TabStop = true;
-            this.rbOpcion1.Text = "radioButton1";
+            this.rbOpcion1.Text = "Opción 1";
             this.rbOpcion1.UseVisualStyleBackColor = true;
             // 
             // rbOpcion2
@@ -121,10 +123,10 @@
             this.rbOpcion2.AutoSize = true;
             this.rbOpcion2.Location = new System.Drawing.Point(341, 40);
             this.rbOpcion2.Name = "rbOpcion2";
-            this.rbOpcion2.Size = new System.Drawing.Size(103, 20);
+            this.rbOpcion2.Size = new System.Drawing.Size(81, 20);
             this.rbOpcion2.TabIndex = 7;
             this.rbOpcion2.TabStop = true;
-            this.rbOpcion2.Text = "radioButton2";
+            this.rbOpcion2.Text = "Opción 2";
             this.rbOpcion2.UseVisualStyleBackColor = true;
             // 
             // rbOpcion3
@@ -132,10 +134,10 @@
             this.rbOpcion3.AutoSize = true;
             this.rbOpcion3.Location = new System.Drawing.Point(341, 66);
             this.rbOpcion3.Name = "rbOpcion3";
-            this.rbOpcion3.Size = new System.Drawing.Size(103, 20);
+            this.rbOpcion3.Size = new System.Drawing.Size(81, 20);
             this.rbOpcion3.TabIndex = 8;
             this.rbOpcion3.TabStop = true;
-            this.rbOpcion3.Text = "radioButton3";
+            this.rbOpcion3.Text = "Opción 3";
             this.rbOpcion3.UseVisualStyleBackColor = true;
             // 
             // rbOpcion4
@@ -143,18 +145,11 @@
             this.rbOpcion4.AutoSize = true;
             this.rbOpcion4.Location = new System.Drawing.Point(341, 92);
             this.rbOpcion4.Name = "rbOpcion4";
-            this.rbOpcion4.Size = new System.Drawing.Size(103, 20);
+            this.rbOpcion4.Size = new System.Drawing.Size(81, 20);
             this.rbOpcion4.TabIndex = 9;
             this.rbOpcion4.TabStop = true;
-            this.rbOpcion4.Text = "radioButton4";
+            this.rbOpcion4.Text = "Opción 4";
             this.rbOpcion4.UseVisualStyleBackColor = true;
-            // 
-            // pbTiempo
-            // 
-            this.pbTiempo.Location = new System.Drawing.Point(258, 214);
-            this.pbTiempo.Name = "pbTiempo";
-            this.pbTiempo.Size = new System.Drawing.Size(77, 23);
-            this.pbTiempo.TabIndex = 10;
             // 
             // btnIniciar
             // 
@@ -162,8 +157,9 @@
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(75, 23);
             this.btnIniciar.TabIndex = 11;
-            this.btnIniciar.Text = "button1";
+            this.btnIniciar.Text = "Iniciar";
             this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // btnResponder
             // 
@@ -171,8 +167,9 @@
             this.btnResponder.Name = "btnResponder";
             this.btnResponder.Size = new System.Drawing.Size(75, 23);
             this.btnResponder.TabIndex = 12;
-            this.btnResponder.Text = "button2";
+            this.btnResponder.Text = "Confirmar respuesta";
             this.btnResponder.UseVisualStyleBackColor = true;
+            this.btnResponder.Click += new System.EventHandler(this.btnResponder_Click);
             // 
             // btnReiniciar
             // 
@@ -192,16 +189,27 @@
             this.lstHistorial.Size = new System.Drawing.Size(324, 196);
             this.lstHistorial.TabIndex = 14;
             // 
+            // progressTiempo
+            // 
+            this.progressTiempo.Location = new System.Drawing.Point(255, 214);
+            this.progressTiempo.Name = "progressTiempo";
+            this.progressTiempo.Size = new System.Drawing.Size(80, 23);
+            this.progressTiempo.TabIndex = 15;
+            // 
+            // timerPregunta
+            // 
+            this.timerPregunta.Tick += new System.EventHandler(this.timerPregunta_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 350);
+            this.Controls.Add(this.progressTiempo);
             this.Controls.Add(this.lstHistorial);
             this.Controls.Add(this.btnReiniciar);
             this.Controls.Add(this.btnResponder);
             this.Controls.Add(this.btnIniciar);
-            this.Controls.Add(this.pbTiempo);
             this.Controls.Add(this.rbOpcion4);
             this.Controls.Add(this.rbOpcion3);
             this.Controls.Add(this.rbOpcion2);
@@ -214,6 +222,7 @@
             this.Controls.Add(this.cmbCategoria);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,11 +240,12 @@
         private System.Windows.Forms.RadioButton rbOpcion2;
         private System.Windows.Forms.RadioButton rbOpcion3;
         private System.Windows.Forms.RadioButton rbOpcion4;
-        private System.Windows.Forms.ProgressBar pbTiempo;
         private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.Button btnResponder;
         private System.Windows.Forms.Button btnReiniciar;
         private System.Windows.Forms.ListBox lstHistorial;
+        private System.Windows.Forms.ProgressBar progressTiempo;
+        private System.Windows.Forms.Timer timerPregunta;
     }
 }
 
