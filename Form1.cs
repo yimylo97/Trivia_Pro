@@ -22,6 +22,9 @@ namespace Trivia_Pro
             btnResponder.Enabled = false;
         }
 
+        private int cantidadPreguntasRespondidas = 0;
+        private string categoriaSeleccionada;
+        private string nivelSeleccionado;
         private Preguntas preguntaActual;
         private int puntaje = 0;
         private int tiempoRestante = 0;
@@ -128,7 +131,7 @@ namespace Trivia_Pro
 
         private void ActualizarPuntaje(bool correcta)
         {
-            if(correcta)
+            if (correcta)
             {
                 puntaje += preguntaActual.ObtenerPuntaje();
             }
@@ -150,7 +153,7 @@ namespace Trivia_Pro
             rbOpcion2.Text = "";
             rbOpcion3.Text = "";
             rbOpcion4.Text = "";
-            
+
             rbOpcion1.Checked = false;
             rbOpcion2.Checked = false;
             rbOpcion3.Checked = false;
@@ -164,5 +167,38 @@ namespace Trivia_Pro
             preguntasRespondidas = 0;
             btnResponder.Enabled = false;
         }
+
+        private void MostrarResumenFinal()
+        {
+            lstHistorial.Items.Clear(); 
+            lstHistorial.Items.Add("🎉 Fin del juego 🎉");
+            lstHistorial.Items.Add($"Preguntas respondidas: {cantidadPreguntasRespondidas}");
+            lstHistorial.Items.Add($"Puntaje final: {PuntajeManager.PuntajeTotal}");
+
+            string comentario;
+            if (PuntajeManager.PuntajeTotal >= 80)
+                comentario = "🔥 ¡Excelente desempeño!";
+            else if (PuntajeManager.PuntajeTotal >= 50)
+                comentario = "💪 Buen trabajo, sigue así.";
+            else
+                comentario = "📚 ¡A practicar más!";
+
+            lstHistorial.Items.Add(comentario);
+        }
+
+        private void MostrarPregunta(Preguntas pregunta)
+        {
+            lblPregunta.Text = pregunta.Texto;
+            rbOpcion1.Text = pregunta.Opciones[0];
+            rbOpcion2.Text = pregunta.Opciones[1];
+            rbOpcion3.Text = pregunta.Opciones[2];
+            rbOpcion4.Text = pregunta.Opciones[3];
+
+            rbOpcion1.Checked = false;
+            rbOpcion2.Checked = false;
+            rbOpcion3.Checked = false;
+            rbOpcion4.Checked = false;
+        }
+
     }
 }
