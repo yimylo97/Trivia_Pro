@@ -217,9 +217,12 @@ namespace Trivia_Pro
             Inicializar("Cultura General", "Fácil");
             Inicializar("Cultura General", "Medio");
             Inicializar("Cultura General", "Difícil");
+
+            Preguntaslistas.CargarTodasLasPreguntas();
+
         }
 
-        
+
     }
 }
 

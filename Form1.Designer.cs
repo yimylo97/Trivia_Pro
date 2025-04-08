@@ -34,7 +34,6 @@
             this.lblPregunta = new System.Windows.Forms.Label();
             this.lblPuntaje = new System.Windows.Forms.Label();
             this.lblTiempo = new System.Windows.Forms.Label();
-            this.lblPreguntasRestantes = new System.Windows.Forms.Label();
             this.rbOpcion1 = new System.Windows.Forms.RadioButton();
             this.rbOpcion2 = new System.Windows.Forms.RadioButton();
             this.rbOpcion3 = new System.Windows.Forms.RadioButton();
@@ -74,45 +73,38 @@
             // lblPregunta
             // 
             this.lblPregunta.AutoSize = true;
-            this.lblPregunta.Location = new System.Drawing.Point(338, 115);
+            this.lblPregunta.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPregunta.Location = new System.Drawing.Point(446, 12);
             this.lblPregunta.Name = "lblPregunta";
-            this.lblPregunta.Size = new System.Drawing.Size(136, 20);
+            this.lblPregunta.Size = new System.Drawing.Size(261, 36);
             this.lblPregunta.TabIndex = 2;
             this.lblPregunta.Text = "Mostrar Pregunta";
             // 
             // lblPuntaje
             // 
             this.lblPuntaje.AutoSize = true;
-            this.lblPuntaje.Location = new System.Drawing.Point(338, 142);
+            this.lblPuntaje.Location = new System.Drawing.Point(338, 293);
             this.lblPuntaje.Name = "lblPuntaje";
-            this.lblPuntaje.Size = new System.Drawing.Size(211, 20);
+            this.lblPuntaje.Size = new System.Drawing.Size(169, 16);
             this.lblPuntaje.TabIndex = 3;
             this.lblPuntaje.Text = "Mostrar puntaje acumulado";
             // 
             // lblTiempo
             // 
             this.lblTiempo.AutoSize = true;
-            this.lblTiempo.Location = new System.Drawing.Point(338, 167);
+            this.lblTiempo.Location = new System.Drawing.Point(338, 266);
             this.lblTiempo.Name = "lblTiempo";
-            this.lblTiempo.Size = new System.Drawing.Size(184, 20);
+            this.lblTiempo.Size = new System.Drawing.Size(147, 16);
             this.lblTiempo.TabIndex = 4;
             this.lblTiempo.Text = "Mostrar tiempo restante\n";
-            // 
-            // lblPreguntasRestantes
-            // 
-            this.lblPreguntasRestantes.AutoSize = true;
-            this.lblPreguntasRestantes.Location = new System.Drawing.Point(338, 192);
-            this.lblPreguntasRestantes.Name = "lblPreguntasRestantes";
-            this.lblPreguntasRestantes.Size = new System.Drawing.Size(44, 16);
-            this.lblPreguntasRestantes.TabIndex = 5;
-            this.lblPreguntasRestantes.Text = "label4";
             // 
             // rbOpcion1
             // 
             this.rbOpcion1.AutoSize = true;
-            this.rbOpcion1.Location = new System.Drawing.Point(341, 14);
+            this.rbOpcion1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbOpcion1.Location = new System.Drawing.Point(452, 70);
             this.rbOpcion1.Name = "rbOpcion1";
-            this.rbOpcion1.Size = new System.Drawing.Size(81, 20);
+            this.rbOpcion1.Size = new System.Drawing.Size(112, 29);
             this.rbOpcion1.TabIndex = 6;
             this.rbOpcion1.TabStop = true;
             this.rbOpcion1.Text = "Opción 1";
@@ -121,9 +113,10 @@
             // rbOpcion2
             // 
             this.rbOpcion2.AutoSize = true;
-            this.rbOpcion2.Location = new System.Drawing.Point(341, 40);
+            this.rbOpcion2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbOpcion2.Location = new System.Drawing.Point(452, 121);
             this.rbOpcion2.Name = "rbOpcion2";
-            this.rbOpcion2.Size = new System.Drawing.Size(81, 20);
+            this.rbOpcion2.Size = new System.Drawing.Size(112, 29);
             this.rbOpcion2.TabIndex = 7;
             this.rbOpcion2.TabStop = true;
             this.rbOpcion2.Text = "Opción 2";
@@ -132,9 +125,10 @@
             // rbOpcion3
             // 
             this.rbOpcion3.AutoSize = true;
-            this.rbOpcion3.Location = new System.Drawing.Point(341, 66);
+            this.rbOpcion3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbOpcion3.Location = new System.Drawing.Point(452, 179);
             this.rbOpcion3.Name = "rbOpcion3";
-            this.rbOpcion3.Size = new System.Drawing.Size(81, 20);
+            this.rbOpcion3.Size = new System.Drawing.Size(112, 29);
             this.rbOpcion3.TabIndex = 8;
             this.rbOpcion3.TabStop = true;
             this.rbOpcion3.Text = "Opción 3";
@@ -143,9 +137,10 @@
             // rbOpcion4
             // 
             this.rbOpcion4.AutoSize = true;
-            this.rbOpcion4.Location = new System.Drawing.Point(341, 92);
+            this.rbOpcion4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbOpcion4.Location = new System.Drawing.Point(452, 231);
             this.rbOpcion4.Name = "rbOpcion4";
-            this.rbOpcion4.Size = new System.Drawing.Size(81, 20);
+            this.rbOpcion4.Size = new System.Drawing.Size(112, 29);
             this.rbOpcion4.TabIndex = 9;
             this.rbOpcion4.TabStop = true;
             this.rbOpcion4.Text = "Opción 4";
@@ -205,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 350);
+            this.ClientSize = new System.Drawing.Size(1311, 481);
             this.Controls.Add(this.progressTiempo);
             this.Controls.Add(this.lstHistorial);
             this.Controls.Add(this.btnReiniciar);
@@ -215,7 +210,6 @@
             this.Controls.Add(this.rbOpcion3);
             this.Controls.Add(this.rbOpcion2);
             this.Controls.Add(this.rbOpcion1);
-            this.Controls.Add(this.lblPreguntasRestantes);
             this.Controls.Add(this.lblTiempo);
             this.Controls.Add(this.lblPuntaje);
             this.Controls.Add(this.lblPregunta);
@@ -236,7 +230,6 @@
         private System.Windows.Forms.Label lblPregunta;
         private System.Windows.Forms.Label lblPuntaje;
         private System.Windows.Forms.Label lblTiempo;
-        private System.Windows.Forms.Label lblPreguntasRestantes;
         private System.Windows.Forms.RadioButton rbOpcion1;
         private System.Windows.Forms.RadioButton rbOpcion2;
         private System.Windows.Forms.RadioButton rbOpcion3;

@@ -37,6 +37,21 @@ namespace Trivia_Pro
                     return 0;
             }
         }
+
+        public static void CargarTodasLasPreguntas()
+        {
+
+            PreguntaFactory.AgregarPregunta(new Preguntaslistas
+            {
+                Texto = "¿Cuál es el planeta más cercano al Sol?",
+                Opciones = new List<string> { "Mercurio", "Venus", "Tierra", "Marte" },
+                RespuestaCorrecta = "Mercurio",
+                Categoria = "Ciencia",
+                Nivel = "Fácil"
+            });
+
+
+        }
     }
 }
 

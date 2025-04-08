@@ -29,7 +29,7 @@ namespace Trivia_Pro
         private int puntaje = 0;
         private int tiempoRestante = 0;
         private int preguntasRespondidas = 0;
-        private const int maxPreguntas = 15;
+        private const int maxPreguntas = 3;
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             if (cmbCategoria.SelectedItem == null || cmbNivel.SelectedItem == null)
@@ -49,13 +49,21 @@ namespace Trivia_Pro
         {
             if (preguntasRespondidas >= maxPreguntas)
             {
-                MessageBox.Show($"Juego terminado. Puntaje final: {puntaje}");
+                MostrarResumenFinal();
+                btnResponder.Enabled = false;
                 return;
             }
             try
             {
                 string categoria = cmbCategoria.SelectedItem.ToString();
                 string nivel = cmbNivel.SelectedItem.ToString();
+
+                if (string.IsNullOrEmpty(categoria) || string.IsNullOrEmpty(nivel))
+                {
+                    MessageBox.Show("Selecciona una categoría y un nivel antes de continuar.");
+                    return;
+                }
+
                 preguntaActual = PreguntaFactory.ObtenerPregunta(categoria, nivel);
 
                 lblPregunta.Text = preguntaActual.Texto;
@@ -81,7 +89,10 @@ namespace Trivia_Pro
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar la pregunta: {ex.Message}");
+                MessageBox.Show("¡Has respondido todas las preguntas disponibles!\n" +
+                        "Se mostrará tu resumen final.");
+                MostrarResumenFinal();
+                btnResponder.Enabled = false;
             }
         }
 
@@ -116,8 +127,19 @@ namespace Trivia_Pro
 
             MessageBox.Show(esCorrecta ? "Respuesta correcta!" : $"Respuesta incorrecta, la respuesta correcta es : {preguntaActual.RespuestaCorrecta}");
 
+            ActualizarPuntaje(esCorrecta);
+
             preguntasRespondidas++;
-            CargarNuevaPregunta();
+
+            try
+            {
+                CargarNuevaPregunta();
+            }
+            catch (Exception)
+            {
+                MostrarResumenFinal();
+                btnResponder.Enabled = false;
+            }
         }
 
         private string obtenerRespuestaSeleccionada()
@@ -147,6 +169,7 @@ namespace Trivia_Pro
             timerPregunta.Stop();
 
             PreguntaFactory.ReiniciarPreguntas();
+            PuntajeManager.ReiniciarPuntaje();
 
             lblPregunta.Text = "Selecciona una categoría y nivel para comenzar";
             rbOpcion1.Text = "";
@@ -166,6 +189,13 @@ namespace Trivia_Pro
             puntaje = 0;
             preguntasRespondidas = 0;
             btnResponder.Enabled = false;
+
+            cmbCategoria.Enabled = true;
+            cmbNivel.Enabled = true;
+            btnIniciar.Enabled = true;
+            btnResponder.Enabled = false;
+
+            lstHistorial.Items.Add("-----Nueva Partida-----");
         }
 
         private void MostrarResumenFinal()
@@ -177,11 +207,11 @@ namespace Trivia_Pro
 
             string comentario;
             if (PuntajeManager.PuntajeTotal >= 80)
-                comentario = "🔥 ¡Excelente desempeño!";
+                comentario = "Excelente";
             else if (PuntajeManager.PuntajeTotal >= 50)
-                comentario = "💪 Buen trabajo, sigue así.";
+                comentario = "Buen trabajo";
             else
-                comentario = "📚 ¡A practicar más!";
+                comentario = "Mal puntaje";
 
             lstHistorial.Items.Add(comentario);
         }
