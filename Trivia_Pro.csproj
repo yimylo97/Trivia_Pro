@@ -57,6 +57,7 @@
     <Compile Include="PreguntaFactory.cs" />
     <Compile Include="PreguntaMedia.cs" />
     <Compile Include="Preguntas.cs" />
+    <Compile Include="Preguntaslistas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

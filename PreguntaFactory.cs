@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Trivia_Pro
             Inicializar("Cultura General", "Fácil");
             Inicializar("Cultura General", "Medio");
             Inicializar("Cultura General", "Difícil");
+
         }
 
         private static void Inicializar(string categoria, string nivel)
@@ -78,6 +80,8 @@ namespace Trivia_Pro
             Inicializar("Cultura General", "Medio");
             Inicializar("Cultura General", "Difícil");
         }
+
+        
     }
 }
 
